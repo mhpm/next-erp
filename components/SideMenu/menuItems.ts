@@ -15,8 +15,8 @@ export const menuItems = [
     icon: FaStore,
     route: '/sales',
     subItems: [
-      { title: 'Órdenes de Venta', route: 'Orders' },
-      { title: 'Reportes', route: 'Reports' },
+      { title: 'Órdenes de Venta', route: '/orders' },
+      { title: 'Reportes', route: '/reports' },
     ],
   },
   {

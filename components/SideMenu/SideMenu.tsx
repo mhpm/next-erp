@@ -13,7 +13,7 @@ import {
 } from 'react-icons/md';
 
 const SideMenu = memo(() => {
-  const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
   const toggleNavbar = () => setIsCollapsed(!isCollapsed);
 
   return (
