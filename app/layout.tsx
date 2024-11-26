@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'RCM',
+  title: 'ERP',
   description: 'Software Manager',
 };
 
