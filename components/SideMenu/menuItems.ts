@@ -9,11 +9,11 @@ import {
 import { FaCog, FaShoppingCart } from 'react-icons/fa';
 
 export const menuItems = [
-  { title: 'Resumen', icon: FaChartPie, route: '/Summary' },
+  { title: 'Resumen', icon: FaChartPie, route: '/summary' },
   {
     title: 'Ventas',
     icon: FaStore,
-    route: '/Sales',
+    route: '/sales',
     subItems: [
       { title: 'Órdenes de Venta', route: 'Orders' },
       { title: 'Reportes', route: 'Reports' },
@@ -22,43 +22,43 @@ export const menuItems = [
   {
     title: 'Compras',
     icon: FaShoppingCart,
-    route: '/Shopping',
+    route: '/shopping',
     subItems: [
-      { title: 'Historial', route: '/History' },
-      { title: 'Pendientes', route: '/Earrings' },
+      { title: 'Historial', route: '/history' },
+      { title: 'Pendientes', route: '/earrings' },
     ],
   },
   {
     title: 'Entregas',
     icon: FaTruck,
-    route: '/Deliveries',
+    route: '/deliveries',
   },
-  { title: 'Corte de Caja', icon: FaShopSlash, route: '/Cashcut' },
+  { title: 'Corte de Caja', icon: FaShopSlash, route: '/cashcut' },
   {
     title: 'Administración',
     icon: FaKey,
-    route: '/Administration',
+    route: '/administration',
     subItems: [
-      { title: 'Historial', route: '/History' },
-      { title: 'Pendientes', route: '/Earrings' },
+      { title: 'Historial', route: '/history' },
+      { title: 'Pendientes', route: '/earrings' },
     ],
   },
   {
     title: 'Inventario',
     icon: MdOutlineInventory,
-    route: '/Inventory',
+    route: '/inventory',
     subItems: [
-      { title: 'Historial', route: '/History' },
-      { title: 'Pendientes', route: '/Earrings' },
+      { title: 'Historial', route: '/history' },
+      { title: 'Pendientes', route: 'eEarrings' },
     ],
   },
   {
     title: 'Configuración',
     icon: FaCog,
-    route: '/Config',
+    route: '/config',
     subItems: [
-      { title: 'Historial', route: '/History' },
-      { title: 'Pendientes', route: '/Earrings' },
+      { title: 'Historial', route: '/history' },
+      { title: 'Pendientes', route: '/earrings' },
     ],
   },
 ];

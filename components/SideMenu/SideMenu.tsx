@@ -12,7 +12,7 @@ import {
   MdOutlineKeyboardArrowDown,
 } from 'react-icons/md';
 
-const NavBar = memo(() => {
+const SideMenu = memo(() => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
   const toggleNavbar = () => setIsCollapsed(!isCollapsed);
 
@@ -28,7 +28,13 @@ const NavBar = memo(() => {
       `}
     >
       <div className={`w-full ${isCollapsed ? 'text-center' : 'text-right'}`}>
-        <button className="text-white" onClick={toggleNavbar}>
+        <button
+          className="text-white"
+          onClick={toggleNavbar}
+          aria-label={
+            isCollapsed ? 'Open navigation menu' : 'Close navigation menu'
+          }
+        >
           {isCollapsed ? <MdOutlineMenu size={32} /> : <MdMenuOpen size={32} />}
         </button>
       </div>
@@ -51,6 +57,7 @@ const NavLinks = memo(({ isCollapsed, menuItems }: any) => {
         className={`flex flex-col gap-2 font-extrabold w-full ${
           isCollapsed ? 'items-center' : 'items-start mt-8'
         }`}
+        aria-label="Main Navigation"
       >
         <ul className="space-y-4 w-full">
           {menuItems.map((item: any, index: number) => (
@@ -88,13 +95,17 @@ const NavItem = memo(
         }`}
       >
         <div
-          className="flex items-center justify-between cursor-pointer py-2 p-3 rounded hover:bg-gray-800"
+          className="flex items-center justify-between cursor-pointer py-2 p-3 rounded hover:bg-gray-800 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
           onClick={() =>
             item.subItems ? toggleAccordion(index) : router.push(item.route)
           }
+          tabIndex={0}
+          role="button"
+          aria-expanded={expandedItem === index}
+          aria-controls={`sub-menu-${index}`}
         >
           <div className="flex items-center space-x-4 hover:text-gray-300">
-            <span className="text-xl">
+            <span className="text-xl" aria-hidden="true">
               <Icon />
             </span>
             {!isCollapsed && !item.subItems && (
@@ -120,14 +131,17 @@ const NavItem = memo(
           className={`overflow-hidden transition-all duration-1000 ${
             expandedItem === index ? 'max-h-screen' : 'max-h-0'
           }`}
+          id={`sub-menu-${index}`}
         >
           {!isCollapsed && expandedItem === index && item.subItems && (
             <ul className="flex flex-col mt-2 space-y-2 text-gray-600 text-sm text-start">
               {item.subItems.map((subItem: any, index: number) => (
                 <div
                   key={index}
-                  className="cursor-pointer pl-12 py-2 p-3 rounded hover:bg-gray-800"
+                  className="cursor-pointer pl-12 py-2 p-3 rounded hover:bg-gray-800 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
                   onClick={() => router.push(subItem.route)}
+                  tabIndex={0}
+                  role="button"
                 >
                   <Link href={subItem.route} className="hover:text-gray-400">
                     {subItem.title}
@@ -142,4 +156,4 @@ const NavItem = memo(
   }
 );
 
-export default NavBar;
+export default SideMenu;
