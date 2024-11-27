@@ -11,6 +11,7 @@ import {
   MdOutlineKeyboardArrowRight,
   MdOutlineKeyboardArrowDown,
 } from 'react-icons/md';
+import { ThemeToggle } from '@/components';
 
 const SideMenu = memo(() => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false);
@@ -24,7 +25,7 @@ const SideMenu = memo(() => {
             ? 'w-20'
             : 'w-full fixed z-50 inset-0 sm:w-[300px] sm:min-w-[200px]'
         }
-        transition-all duration-200 p-4 sm:relative sm:flex flex-col items-center bg-gray-900 text-center
+        transition-all duration-200 p-4 sm:relative sm:flex flex-col items-center bg-gray-900 text-center text-white
       `}
     >
       <div className={`w-full ${isCollapsed ? 'text-center' : 'text-right'}`}>
@@ -40,6 +41,9 @@ const SideMenu = memo(() => {
       </div>
       {!isCollapsed && <Logo />}
       <NavLinks isCollapsed={isCollapsed} menuItems={menuItems} />
+      <div className="absolute bottom-10">
+        {!isCollapsed && <ThemeToggle />}
+      </div>
     </div>
   );
 });
@@ -95,7 +99,7 @@ const NavItem = memo(
         }`}
       >
         <div
-          className="flex items-center justify-between cursor-pointer py-2 p-3 rounded hover:bg-gray-800 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
+          className="flex items-center justify-between cursor-pointer py-2 p-3 rounded hover:bg-gray-800"
           onClick={() =>
             item.subItems ? toggleAccordion(index) : router.push(item.route)
           }
@@ -134,18 +138,16 @@ const NavItem = memo(
           id={`sub-menu-${index}`}
         >
           {!isCollapsed && expandedItem === index && item.subItems && (
-            <ul className="flex flex-col mt-2 space-y-2 text-gray-600 text-sm text-start">
+            <ul className="flex flex-col mt-2 space-y-2 text-gray-500 text-sm text-start">
               {item.subItems.map((subItem: any, index: number) => (
                 <div
                   key={index}
-                  className="cursor-pointer pl-12 py-2 p-3 rounded hover:bg-gray-800 focus:outline focus:outline-2 focus:outline-offset-2 focus:outline-blue-500"
+                  className="cursor-pointer pl-12 py-2 p-3 rounded hover:bg-gray-800"
                   onClick={() => router.push(subItem.route)}
                   tabIndex={0}
                   role="button"
                 >
-                  <Link href={subItem.route} className="hover:text-gray-400">
-                    {subItem.title}
-                  </Link>
+                  <Link href={subItem.route}>{subItem.title}</Link>
                 </div>
               ))}
             </ul>

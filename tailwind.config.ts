@@ -11,8 +11,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        primary: 'hsl(var(--primary))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
       },
     },
   },
